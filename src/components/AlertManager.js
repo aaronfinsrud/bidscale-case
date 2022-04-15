@@ -32,7 +32,11 @@ function useAlertReducer(state, action) {
   }
 }
 
-useAlertReducer.propTypes = {
+AlertManager.defaultProps = {
+  alerts: [],
+}
+
+AlertManager.propTypes = {
   alerts: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired,
