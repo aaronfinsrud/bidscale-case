@@ -13,11 +13,12 @@ import Select from "@mui/material/Select"
 
 function AlertExample({ dispatchAlert }) {
   const [open, setOpen] = React.useState(false)
-  const [timeLimit, setTimeLimit] = React.useState(10000)
+  const [timeLimit, setTimeLimit] = React.useState(10)
   const [alertType, setAlertType] = React.useState("info")
   const [text, setText] = React.useState("")
   const [link, setLink] = React.useState("")
   const [id, setId] = React.useState(1)
+  const [missingText, setMissingText] = React.useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -25,7 +26,7 @@ function AlertExample({ dispatchAlert }) {
 
   const resetInputs = () => {
     setAlertType("info")
-    setTimeLimit(10000)
+    setTimeLimit(10)
     setLink("")
     setText("")
   }
@@ -36,10 +37,15 @@ function AlertExample({ dispatchAlert }) {
   }
 
   const handleSubmit = () => {
-    dispatchAlert({ text, link, timeLimit, alertType, type: "add", id })
-    setTimeout(() => dispatchAlert({ type: "remove", id }), timeLimit)
-    setId(id + 1)
-    setOpen(false)
+    if (text.length > 0) {
+      dispatchAlert({ text, link, timeLimit, alertType, type: "add", id })
+      setTimeout(() => dispatchAlert({ type: "remove", id }), timeLimit * 1000)
+      setId(id + 1)
+      setOpen(false)
+      setMissingText(false)
+    } else {
+      setMissingText(true)
+    }
   }
 
   return (
@@ -55,30 +61,33 @@ function AlertExample({ dispatchAlert }) {
           </DialogContentText>
           <TextField
             autoFocus
+            required
+            error={missingText}
+            helperText={missingText ? "Alert text is required" : false}
             margin="dense"
-            id="text"
-            label="Text"
+            id="alert-text"
+            label="Alert text"
             type="text"
             fullWidth
+            placeholder="Walk dog"
             variant="standard"
             onChange={(e) => setText(e.target.value)}
           />
           <TextField
-            autoFocus
             margin="dense"
-            id="link"
-            label="Link"
+            id="alert-link"
+            label="Alert link"
             fullWidth
+            placeholder="google.com"
             variant="standard"
             onChange={(e) => setLink(e.target.value)}
           />
           <TextField
-            autoFocus
             margin="dense"
-            id="name"
-            label="Time Limit"
-            type="numbers"
-            fullWidth
+            id="time-limit"
+            label="Time limit"
+            type="number"
+            placeholder="Seconds"
             variant="standard"
             onChange={(e) => setTimeLimit(e.target.value)}
           />
@@ -88,6 +97,7 @@ function AlertExample({ dispatchAlert }) {
             id="alert-type-selector"
             value={alertType}
             label="Alert type"
+            variant="standard"
             onChange={(e) => setAlertType(e.target.value)}
           >
             <MenuItem value="info">Info</MenuItem>
