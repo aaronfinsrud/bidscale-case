@@ -17,27 +17,16 @@ function App() {
         alignItems="stretch"
       >
         <Grid item xs>
-          <h2>Goal</h2>
-          The goal of this exercise is to test your ability to generate usable
-          code from user stories. These user stories may not have all the
-          answers, and you be need to find a solution that isn’t laid out in
-          front of you. The expected time to code this should be around an hour,
-          but some additional time researching may be necessary.
-          <p>
-            One of CloudPareto’s goals is to construct a multi-tenant,
-            serverless, Business-to-Government SaaS application for our
-            customers. The stack we are utilizing is listed below. Develop a
-            standalone front end react application that aligns with the
-            following user stories. Please start your application by using
-            create-react-app and then installing Material-UI. You may use
-            additional libraries if you would like, but be prepared to explain
-            your decisions to do so. Once you have completed, upload your
-            application to GitHub and provide me a link to the repository.
-          </p>
+          <h2>Prompt</h2>
+          Develop a standalone front end react application that aligns with the
+          following user stories. Please start your application by using
+          create-react-app and then installing Material-UI. You may use
+          additional libraries if you would like, but be prepared to explain
+          your decisions to do so.
         </Grid>
 
         <Grid item xs>
-          <h2>Stories</h2>
+          <h2>User Stories</h2>
           <ul>
             <li>Alert Reducer</li>
             <ul>
@@ -53,12 +42,12 @@ function App() {
                 A unique ID should be generated if not provided in dispatch
               </li>
               <li>
-                Reduce must be importable to other components with import{" "}
-                `useAlertReducer` from "./(../)*AlertManager.js"
+                Reduce must be importable to other components with import
+                `useAlertReducer` from &quot;./(../)*AlertManager.js&quot;
               </li>
               <li>Reducer should allow adding or removing alerts.</li>
               <li>
-                Must support the alertTypes ['error','warning','info','success']
+                Must support the alertTypes: error, warning, info, success
               </li>
             </ul>
 
