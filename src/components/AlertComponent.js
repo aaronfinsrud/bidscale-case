@@ -2,6 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import Alert from "@mui/material/Alert"
 import AlertTitle from "@mui/material/AlertTitle"
+import Button from "@mui/material/Button"
 
 function AlertComponent({ text, link, alertType, alertTitle }) {
   const openInNewTab = (url) => {
@@ -13,14 +14,23 @@ function AlertComponent({ text, link, alertType, alertTitle }) {
     if (newWindow) newWindow.opener = null
   }
 
-  const handleClick = link
-    ? () => {
-        openInNewTab(link)
-      }
-    : () => {}
-
   return (
-    <Alert onClick={handleClick} severity={alertType}>
+    <Alert
+      severity={alertType}
+      action={
+        link ? (
+          <Button
+            color="inherit"
+            size="small"
+            onClick={() => openInNewTab(link)}
+          >
+            Visit Link
+          </Button>
+        ) : (
+          false
+        )
+      }
+    >
       <AlertTitle>{alertTitle.toUpperCase()}</AlertTitle>
       {text}
     </Alert>
