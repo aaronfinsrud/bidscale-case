@@ -15,8 +15,8 @@ function AlertExample({ dispatchAlert }) {
   const [open, setOpen] = React.useState(false)
   const [timeLimit, setTimeLimit] = React.useState(10)
   const [alertType, setAlertType] = React.useState("info")
-  const [text, setText] = React.useState("")
-  const [link, setLink] = React.useState("")
+  const [text, setText] = React.useState(null)
+  const [link, setLink] = React.useState(null)
   const [id, setId] = React.useState(1)
   const [missingText, setMissingText] = React.useState(false)
 
@@ -27,8 +27,8 @@ function AlertExample({ dispatchAlert }) {
   const resetInputs = () => {
     setAlertType("info")
     setTimeLimit(10)
-    setLink("")
-    setText("")
+    setLink(null)
+    setText(null)
   }
 
   const handleClose = () => {
@@ -37,7 +37,7 @@ function AlertExample({ dispatchAlert }) {
   }
 
   const handleSubmit = () => {
-    if (text.length > 0) {
+    if (text && text.length > 0) {
       dispatchAlert({ text, link, timeLimit, alertType, type: "add", id })
       setTimeout(() => dispatchAlert({ type: "remove", id }), timeLimit * 1000)
       setId(id + 1)
