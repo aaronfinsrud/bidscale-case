@@ -16,7 +16,7 @@ function App() {
         justifyContent="space-between"
         alignItems="stretch"
       >
-        <Grid item xs spacing={2}>
+        <Grid item xs>
           <h2>Goal</h2>
           The goal of this exercise is to test your ability to generate usable
           code from user stories. These user stories may not have all the
@@ -36,7 +36,7 @@ function App() {
           </p>
         </Grid>
 
-        <Grid item xs spacing={2}>
+        <Grid item xs>
           <h2>Stories</h2>
           <ul>
             <li>Alert Reducer</li>
@@ -54,7 +54,7 @@ function App() {
               </li>
               <li>
                 Reduce must be importable to other components with import{" "}
-                {useAlertReducer} from "./(../)*AlertManager.js"
+                `useAlertReducer` from "./(../)*AlertManager.js"
               </li>
               <li>Reducer should allow adding or removing alerts.</li>
               <li>
@@ -98,7 +98,7 @@ function App() {
           </ul>
         </Grid>
 
-        <Grid item xs spacing={2}>
+        <Grid item xs>
           <AlertManager alerts={alerts} dispatchAlert={dispatchAlert} />
         </Grid>
       </Grid>
