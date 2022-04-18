@@ -1,5 +1,9 @@
 # BidScale Case
 
+## Screenshots
+![Peek 2022-04-17 23-32](https://user-images.githubusercontent.com/52397472/163750527-b7ac5d68-4b7e-467e-9fcd-014afb354ad9.gif)
+
+
 ## Prompt
 Develop a standalone front end react application that aligns with the following user stories. Please start your application by using create-react-app and then installing Material-UI. You may use additional libraries if you would like, but be prepared to explain your decisions to do so.
 
