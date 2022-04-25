@@ -42,6 +42,7 @@ function AlertExample({ dispatchAlert }) {
       setTimeout(() => dispatchAlert({ type: "remove", id }), timeLimit * 1000)
       setId(id + 1)
       setOpen(false)
+      resetInputs()
       setMissingText(false)
     } else {
       setMissingText(true)
